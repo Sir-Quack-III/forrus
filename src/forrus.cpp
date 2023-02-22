@@ -39,11 +39,12 @@ uint8_t forrus::round(uint8_t inp, uint8_t key) {
 
     out ^= key;
     out = leftRotate(out, 3);
-    out = (uint8_t)((int)pow((float)out, 5.0) % 173);
-    out ^= (uint8_t)((int)pow((float)key, 5.0) % 173);
+    out = (uint8_t)(myPow((float)out, 5.0) % 173);
+    out ^= (uint8_t)(myPow((float)key, 5.0) % 173);
 
     return out;
 }
+
 std::array<uint8_t, 16> forrus::hash(std::array<uint8_t, 16> inp) {
     std::array<uint8_t, 16> hash_in = inp;
     std::array<uint8_t, 16> hash_out = {0};
